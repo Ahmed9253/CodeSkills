@@ -29,13 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -236,31 +229,66 @@ body {
 /* Hero Section */
 .hero {
   width: 100%;
-  padding: 8rem 5% 5rem;
+  padding: 8rem 0 5rem;
   margin-top: 0;
+  /* display: flex; properties moved to .hero-inner */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* gap: 2rem; */
+  min-height: 90vh;
+  position: relative;
+  overflow: hidden;
+  background: #0f172a; /* Dark blue-gray base */
+  display: flex; /* Keep flex to center hero-inner if it doesn't take full width before max-width */
+  justify-content: center; /* Center hero-inner */
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 1100px; /* Adjust as needed, e.g., 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem; /* Horizontal padding for content */
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  min-height: 90vh;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(99, 102, 241, 0.15) 0%,
-    transparent 50%
-  );
+  position: relative; /* For z-index stacking context */
+  z-index: 1; /* Above hero::before */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1), transparent 60%),
+              radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.2), transparent 50%),
+              radial-gradient(ellipse at bottom right, rgba(217, 70, 239, 0.15), transparent 60%);
+  animation: heroGradientAnimation 20s ease infinite alternate;
+  z-index: 0;
 }
 
 .hero-content {
-  max-width: 600px;
+  /* position: relative; z-index: 1; - Handled by .hero-inner now */
+  max-width: 600px; /* Can be adjusted, e.g., 50% of .hero-inner */
   text-align: left;
+  animation: fadeInFromLeft 0.8s ease-out forwards;
+  flex-basis: 55%; /* Give more space to content */
+  flex-shrink: 0;
 }
 
 .hero-badge {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(99, 102, 241, 0.1);
+  padding: 0.6rem 1.2rem;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: 2rem;
   margin-bottom: 2rem;
+  animation: pulseBadge 2.5s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
 }
 
 .hero-badge span {
@@ -272,37 +300,113 @@ body {
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 3.8rem; /* Slightly larger */
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
-  background: var(--primary-gradient);
+  background: linear-gradient(135deg, #a78bfa 0%, #f8fafc 70%, #a78bfa 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 1.15rem; /* Slightly larger */
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  /* Removed margin-left/right auto for consistent left align with h1 */
+  line-height: 1.7;
 }
 
+/* Styles for hero action buttons if not already present or to ensure they are before design elements */
 .hero-actions {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 2.5rem 0;
+  align-items: center;
+  gap: 1rem; /* Gap between buttons and other elements */
+  margin-top: 2rem;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.hero-actions .cta-btn {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none; /* For potential <a> tags styled as buttons */
+  display: inline-block; /* For <a> tags */
+}
+
+.hero-actions .cta-btn.primary {
+  background-color: var(--primary-accent, #6366f1);
+  color: white;
+}
+
+.hero-actions .cta-btn.primary:hover {
+  background-color: var(--primary-accent-dark, #4f46e5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-actions .cta-btn.secondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--dark-text-primary, #e2e8f0);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-actions .cta-btn.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* New styles for hero design elements */
+.hero-design-elements {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Spacing between the new elements */
+  margin-left: 1.5rem; /* Space it from the "Watch Demo" button */
+}
+
+.design-element-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between icon and text */
+  font-size: 0.875rem; /* 14px */
+  color: var(--dark-text-secondary, #94a3b8); /* Light gray text */
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* Pill shape */
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.design-element-item:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.design-element-item .hero-icon-small {
+  width: 18px;
+  height: 18px;
+  color: var(--dark-primary, #38bdf8); /* Accent color for icons */
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .hero-image-wrapper {
-  flex: 1;
-  max-width: 500px;
-  height: 500px;
+  flex-basis: 40%; /* Give space to image */
+  max-width: 450px; /* Slightly smaller to fit well */
+  height: auto; /* Adjust to content */
+  display: flex; /* To help center image if needed */
+  align-items: center;
+  justify-content: center;
   position: relative;
   animation: floatAnimation 3s ease-in-out infinite;
 }
@@ -324,6 +428,34 @@ body {
   }
 }
 
+@keyframes heroGradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseBadge {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.2);
+  }
+}
+
+@keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .cta-btn {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
@@ -342,8 +474,9 @@ body {
 }
 
 .cta-btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.1);
 }
 
 .cta-btn.secondary {
@@ -353,8 +486,10 @@ body {
 }
 
 .cta-btn.secondary:hover {
-  background: rgba(139, 92, 246, 0.1);
-  transform: translateY(-2px);
+  background: rgba(139, 92, 246, 0.15);
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
 }
 
 @media (max-width: 640px) {
@@ -1661,14 +1796,16 @@ body {
 
 /* Marquee Divider Styles */
 .marquee-divider {
-  position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
-  background: transparent;
-  padding: 5rem 0;
-  margin: 4rem 0;
-  border-top: 1px solid rgba(99, 102, 241, 0.1);
-  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  white-space: nowrap;
+  padding: 1rem 0;
+  background: linear-gradient(90deg, #1a1a1a, #242424, #1a1a1a);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 .marquee-divider::before,

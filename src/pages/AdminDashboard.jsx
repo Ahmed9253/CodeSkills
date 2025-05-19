@@ -91,82 +91,60 @@ const placeholderPendingTests = [
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
-
-  const stats = [
-    {
-      id: 1,
-      name: "Total Users",
-      value: "1,234",
-      icon: UserGroupIcon,
-      trend: "+12%",
-    },
-    {
-      id: 2,
-      name: "Tests Completed",
-      value: "5,678",
-      icon: ClipboardDocumentCheckIcon,
-      trend: "+8%",
-    },
-    {
-      id: 3,
-      name: "Pending Tests",
-      value: "89",
-      icon: ClockIcon,
-      trend: "-5%",
-    },
-    {
-      id: 4,
-      name: "Avg. Score",
-      value: "87%",
-      icon: ChartBarIcon,
-      trend: "+3%",
-    },
-  ];
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
     <div className="admin-dashboard">
       {/* Sidebar */}
-      <aside className="dashboard-sidebar">
+      <aside className={`dashboard-sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
           <h2>Admin Panel</h2>
+          <button 
+            className="sidebar-toggle" 
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            title={sidebarCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+          >
+            {sidebarCollapsed ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="toggle-icon">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="toggle-icon">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            )}
+          </button>
         </div>
         <nav className="sidebar-nav">
-          {" "}
           <button
             className={`nav-item ${activeTab === "overview" ? "active" : ""}`}
             onClick={() => setActiveTab("overview")}
           >
             <ChartBarIcon className="nav-icon" />
-            Overview
+            <span>Overview</span>
           </button>
           <button
             className={`nav-item ${activeTab === "users" ? "active" : ""}`}
             onClick={() => setActiveTab("users")}
           >
             <UserGroupIcon className="nav-icon" />
-            Users
+            <span>Users</span>
           </button>
           <button
             className={`nav-item ${activeTab === "results" ? "active" : ""}`}
             onClick={() => setActiveTab("results")}
           >
             <ClipboardDocumentCheckIcon className="nav-icon" />
-            Test Results
+            <span>Test Results</span>
           </button>
           <button
             className={`nav-item ${activeTab === "pending" ? "active" : ""}`}
             onClick={() => setActiveTab("pending")}
           >
             <ClockIcon className="nav-icon" />
-            Pending Tests
+            <span>Pending Tests</span>
           </button>
-          <button
-            className={`nav-item ${activeTab === "settings" ? "active" : ""}`}
-            onClick={() => setActiveTab("settings")}
-          >
-            <Cog6ToothIcon className="nav-icon" />
-            Settings
-          </button>
+
         </nav>
       </aside>
 
@@ -194,41 +172,121 @@ export default function AdminDashboard() {
           {activeTab === "overview" && (
             <div className="overview-section">
               <h2>Dashboard Overview</h2>
-              <div className="stats-grid">
-                {stats.map((stat) => (
-                  <div key={stat.id} className="stat-card">
-                    <div className="stat-icon">
-                      <stat.icon className="icon" />
-                    </div>
-                    <div className="stat-info">
-                      <h3>{stat.name}</h3>
-                      <p className="stat-value">{stat.value}</p>{" "}
-                      <span
-                        className={`stat-trend ${
-                          stat.trend.startsWith("+") ? "positive" : "negative"
-                        }`}
-                      >
-                        <ArrowTrendingUpIcon className="trend-icon" />
-                        {stat.trend}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+
+              {/* Recent Users Section */}
+              <div className="overview-users-section">
+                <div className="section-header-with-action">
+                  <h3><UserGroupIcon className="section-icon" /> Recent Users</h3>
+                  <button className="view-all-btn" onClick={() => setActiveTab("users")}>View All Users</button>
+                </div>
+                <div className="users-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Profile</th>
+                        <th>Full Name</th>
+                        <th>Email Address</th>
+                        <th>Academic Background</th>
+                        <th>Assessments Done</th>
+                        <th>Manage</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {placeholderUsers.slice(0, 3).map((user) => (
+                        <tr key={user.id}>
+                          <td>
+                            <img
+                              src={user.picture}
+                              alt={user.name}
+                              className="user-avatar"
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50%",
+                              }}
+                            />
+                          </td>
+                          <td>{user.name}</td>
+                          <td>{user.email}</td>
+                          <td>{user.qualifications}</td>
+                          <td>{user.testsCompleted}</td>
+                          <td>
+                            <button className="action-btn">View</button>
+                            <button className="action-btn">Edit</button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
-              <div className="recent-activity">
-                <h3>Recent Activity</h3>
-                <div className="activity-chart">
-                  {/* Placeholder for activity chart */}
-                  <div className="chart-placeholder">
-                    <div className="chart-bar" style={{ height: "60%" }}></div>
-                    <div className="chart-bar" style={{ height: "80%" }}></div>
-                    <div className="chart-bar" style={{ height: "40%" }}></div>
-                    <div className="chart-bar" style={{ height: "90%" }}></div>
-                    <div className="chart-bar" style={{ height: "70%" }}></div>
-                    <div className="chart-bar" style={{ height: "50%" }}></div>
-                    <div className="chart-bar" style={{ height: "85%" }}></div>
-                  </div>
+              {/* Recent Test Results Section */}
+              <div className="overview-results-section">
+                <div className="section-header-with-action">
+                  <h3><ClipboardDocumentCheckIcon className="section-icon" /> Recent Test Results</h3>
+                  <button className="view-all-btn" onClick={() => setActiveTab("results")}>View All Results</button>
+                </div>
+                <div className="results-grid overview-grid">
+                  {placeholderTestResults.map((result) => (
+                    <div key={result.id} className="result-card">
+                      <div className="result-header">
+                        <h3>{result.testName}</h3>
+                        <span
+                          className={`score ${
+                            result.score >= 90
+                              ? "excellent"
+                              : result.score >= 75
+                              ? "good"
+                              : "average"
+                          }`}
+                        >
+                          {result.score}%
+                        </span>
+                      </div>
+                      <div className="result-details">
+                        <p>Student: {result.studentName}</p>
+                        <p>Date: {result.date}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pending Tests Section */}
+              <div className="overview-pending-section">
+                <div className="section-header-with-action">
+                  <h3><ClockIcon className="section-icon" /> Pending Tests</h3>
+                  <button className="view-all-btn" onClick={() => setActiveTab("pending")}>View All Pending</button>
+                </div>
+                <div className="pending-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Student</th>
+                        <th>Test</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {placeholderPendingTests.slice(0, 3).map((test) => (
+                        <tr key={test.id}>
+                          <td>{test.studentName}</td>
+                          <td>{test.testName}</td>
+                          <td>{test.dueDate}</td>
+                          <td>
+                            <span className="status pending">Pending</span>
+                          </td>
+                          <td>
+                            <button className="action-btn">Remind</button>
+                            <button className="action-btn">Cancel</button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -350,35 +408,7 @@ export default function AdminDashboard() {
             </div>
           )}
 
-          {activeTab === "settings" && (
-            <div className="settings-section">
-              <h2>Dashboard Settings</h2>
-              <div className="settings-form">
-                <div className="form-group">
-                  <label>Email Notifications</label>
-                  <div className="toggle-switch">
-                    <input type="checkbox" id="email-notifications" />
-                    <label htmlFor="email-notifications"></label>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label>Dark Mode</label>
-                  <div className="toggle-switch">
-                    <input type="checkbox" id="dark-mode" />
-                    <label htmlFor="dark-mode"></label>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label>Language</label>
-                  <select>
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                    <option value="fr">French</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          )}
+
         </div>
       </main>
     </div>

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AdminDashboard from "./pages/AdminDashboard";
 import "./App.css";
+import "./pages/DarkThemeSkills.css";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 import {
@@ -11,6 +12,7 @@ import {
   UserGroupIcon,
   DocumentCheckIcon,
   XMarkIcon,
+  ArrowRightIcon, // Added ArrowRightIcon
 } from "@heroicons/react/24/outline";
 import {
   Chart as ChartJS,
@@ -246,7 +248,7 @@ function App() {
                     onClick={() => setShowAdminLoginModal(true)}
                     title="Admin Login"
                   >
-                    <AcademicCapIcon className="nav-icon" />
+                    <ArrowRightIcon className="nav-icon" />
                   </button>
                   <button
                     className="nav-btn login"
@@ -386,6 +388,38 @@ function App() {
                         <label htmlFor="signup-password">Password</label>
                         <input type="password" id="signup-password" required />
                       </div>
+                      <div className="input-group">
+                        <label htmlFor="signup-age">Age</label>
+                        <input type="number" id="signup-age" min="16" max="100" required />
+                      </div>
+                      <div className="input-group">
+                        <label htmlFor="signup-gender">Gender</label>
+                        <select id="signup-gender" required>
+                          <option value="">Select Gender</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                      <div className="input-group">
+                        <label htmlFor="signup-education">Education Level</label>
+                        <select id="signup-education" required>
+                          <option value="">Select Education Level</option>
+                          <option value="high-school">High School</option>
+                          <option value="bachelors">Bachelor's Degree</option>
+                          <option value="masters">Master's Degree</option>
+                          <option value="phd">Ph.D.</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                      <div className="input-group">
+                        <label htmlFor="signup-qualification">Professional Qualification</label>
+                        <textarea id="signup-qualification" placeholder="Enter your professional qualifications, certifications, or relevant experience" required></textarea>
+                      </div>
+                      <div className="input-group">
+                        <label htmlFor="signup-picture">Profile Picture</label>
+                        <input type="file" id="signup-picture" accept="image/*" required />
+                      </div>
                       <div className="terms-checkbox">
                         <input type="checkbox" id="signup-terms" required />
                         <label htmlFor="signup-terms">
@@ -416,28 +450,40 @@ function App() {
               )}
 
               <section className="hero" id="hero">
-                <div className="hero-content">
-                  <div className="hero-badge">
-                    <span>🚀 Next-Gen Coding Assessment</span>
+                <div className="hero-inner">
+                  <div className="hero-content">
+                    <div className="hero-badge">
+                      <span>🚀 Next-Gen Coding Assessment</span>
+                    </div>
+                    <h1>Master Your Coding Journey</h1>
+                    <p className="hero-description">
+                      Level up your coding skills with AI-powered assessments and
+                      real-time feedback. Start your journey to becoming a better
+                      developer today.
+                    </p>
+                    <div className="hero-actions">
+                      <button className="cta-btn secondary">Watch Demo</button>
+                      <div className="hero-design-elements">
+                        <span className="design-element-item">
+                          <CodeBracketIcon className="hero-icon-small" /> Rapid Skill Tests
+                        </span>
+                        <span className="design-element-item">
+                          <ChartBarIcon className="hero-icon-small" /> Detailed Analytics
+                        </span>
+                        <span className="design-element-item">
+                          <AcademicCapIcon className="hero-icon-small" /> Master Concepts
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <h1>Master Your Coding Journey</h1>
-                  <p className="hero-description">
-                    Level up your coding skills with AI-powered assessments and
-                    real-time feedback. Start your journey to becoming a better
-                    developer today.
-                  </p>
-                  <div className="hero-actions">
-                    <button className="cta-btn primary">Get Started</button>
-                    <button className="cta-btn secondary">Watch Demo</button>
-                  </div>
-                </div>
-                <div className="hero-image-wrapper">
-                  <img
-                    src="/hero.png"
-                    alt="Coding education illustration"
-                    className="hero-image"
-                  />
-                </div>
+                  <div className="hero-image-wrapper">
+                    <img
+                      src="/hero.png"
+                      alt="Coding education illustration"
+                      className="hero-image"
+                    />
+                  </div> {/* Closes hero-image-wrapper */}
+                </div> {/* Closes hero-inner */}
               </section>
 
               {/* Marquee Divider */}
@@ -475,12 +521,13 @@ function App() {
               </div>
 
               <section
-                className={`about-section ${aboutInView ? "fade-in-up" : ""}`}
+                className={`about-section dark-theme ${aboutInView ? "fade-in-up" : ""}`}
                 id="about"
                 ref={aboutRef}
               >
+                <div className="dark-bg-pattern"></div>
                 <div className="section-header">
-                  <h2>Essential Code Skills</h2>
+                  <h2 className="dark-heading">Essential Code Skills</h2>
                   <p className="about-description">
                     Master the fundamental skills that every modern developer
                     needs. From algorithmic thinking to clean code practices, we
@@ -490,57 +537,52 @@ function App() {
                   </p>
                 </div>
                 <div className="about-grid">
-                  <div className="about-card">
-                    <CodeBracketIcon className="about-icon" />
+                  <div className="about-card dark-card">
+                    <div className="icon-container purple">
+                      <CodeBracketIcon className="about-icon" />
+                    </div>
                     <h3>Problem Solving</h3>
                     <p>
                       Learn to break down complex problems and develop efficient
                       algorithmic solutions through hands-on coding challenges.
                     </p>
-                    <div className="stat-pill">
+                    <div className="stat-pill dark-pill">
                       <span>Practice Problems</span>
-                      <span className="pill-value">500+</span>
+                      <span className="pill-value glow-text">500+</span>
                     </div>
                   </div>
 
-                  <div className="about-card">
-                    <DocumentCheckIcon className="about-icon" />
+                  <div className="about-card dark-card">
+                    <div className="icon-container blue">
+                      <DocumentCheckIcon className="about-icon" />
+                    </div>
                     <h3>Clean Code</h3>
                     <p>
                       Master the art of writing maintainable, readable, and
                       efficient code following industry best practices.
                     </p>
-                    <div className="stat-pill">
+                    <div className="stat-pill dark-pill">
                       <span>Code Quality</span>
-                      <span className="pill-value">A+</span>
+                      <span className="pill-value glow-text">A+</span>
                     </div>
                   </div>
 
-                  <div className="about-card">
-                    <ChartBarIcon className="about-icon" />
+                  <div className="about-card dark-card">
+                    <div className="icon-container green">
+                      <ChartBarIcon className="about-icon" />
+                    </div>
                     <h3>Data Structures</h3>
                     <p>
                       Build expertise in essential data structures and
                       understand when and how to apply them effectively.
                     </p>
-                    <div className="stat-pill">
+                    <div className="stat-pill dark-pill">
                       <span>Topics Covered</span>
-                      <span className="pill-value">25+</span>
+                      <span className="pill-value glow-text">25+</span>
                     </div>
                   </div>
 
-                  <div className="about-card">
-                    <AcademicCapIcon className="about-icon" />
-                    <h3>System Design</h3>
-                    <p>
-                      Learn to design scalable, efficient, and maintainable
-                      software systems for real-world applications.
-                    </p>
-                    <div className="stat-pill">
-                      <span>Projects</span>
-                      <span className="pill-value">50+</span>
-                    </div>
-                  </div>
+
                 </div>
               </section>
 
@@ -622,58 +664,7 @@ function App() {
                     </ul>
                   </div>
 
-                  <div className="feature-card">
-                    <div className="feature-icon-wrapper">
-                      <UserGroupIcon className="feature-icon" />
-                    </div>
-                    <h3>Account Management</h3>
-                    <p>
-                      Secure and seamless account management with personalized
-                      profiles
-                    </p>
-                    <div className="chart-container">
-                      <div className="account-features">
-                        <div className="account-feature-item">
-                          <div className="feature-progress">
-                            <div className="progress-circle completed">
-                              <span className="checkmark">✓</span>
-                            </div>
-                            <div className="feature-text">
-                              <h4>Quick Registration</h4>
-                              <p>Sign up in less than 2 minutes</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="account-feature-item">
-                          <div className="feature-progress">
-                            <div className="progress-circle completed">
-                              <span className="checkmark">✓</span>
-                            </div>
-                            <div className="feature-text">
-                              <h4>Secure Authentication</h4>
-                              <p>Multi-factor authentication</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="account-feature-item">
-                          <div className="feature-progress">
-                            <div className="progress-circle completed">
-                              <span className="checkmark">✓</span>
-                            </div>
-                            <div className="feature-text">
-                              <h4>Profile Management</h4>
-                              <p>Customizable user profiles</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <ul className="feature-list">
-                      <li>Social login options</li>
-                      <li>Progress tracking</li>
-                      <li>Personalized dashboard</li>
-                    </ul>
-                  </div>
+
                 </div>
               </section>
               {/*contact section*/}
