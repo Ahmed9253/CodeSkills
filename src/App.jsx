@@ -239,14 +239,6 @@ function App() {
                       Contact
                     </a>
                   </li>
-                  <li>
-                    <Link
-                      to="/admin"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Admin Dashboard
-                    </Link>
-                  </li>
                 </ul>
                 <div className="nav-actions">
                   <button
@@ -288,15 +280,14 @@ function App() {
                       className="auth-form"
                       onSubmit={(e) => {
                         e.preventDefault();
-                        // Add your admin authentication logic here
                         const username = e.target.adminUsername.value;
                         const password = e.target.adminPassword.value;
 
-                        // Example validation (replace with your actual auth logic)
-                        if (username === "admin" && password === "admin123") {
+                        // Check for the specified credentials
+                        if (username === "codeskill" && password === "Admin") {
                           window.location.href = "/admin";
                         } else {
-                          alert("Invalid admin credentials");
+                          alert("Invalid admin credentials. Please try again.");
                         }
                       }}
                     >
