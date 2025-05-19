@@ -676,78 +676,7 @@ function App() {
                   </div>
                 </div>
               </section>
-
-              {/* Devices Reel Divider */}
-              <div className="devices-reel-divider">
-                <div className="devices-reel-content">
-                  <div className="device-element smartphone">
-                    <div className="screen">
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                    </div>
-                  </div>
-                  <div className="device-element laptop">
-                    <div className="screen">
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                    </div>
-                    <div className="keyboard"></div>
-                  </div>
-                  <div className="device-element tablet">
-                    <div className="screen">
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                    </div>
-                  </div>
-                  <div className="device-element desktop">
-                    <div className="monitor">
-                      <div className="screen">
-                        <div className="code-line"></div>
-                        <div className="code-line"></div>
-                        <div className="code-line"></div>
-                      </div>
-                    </div>
-                    <div className="stand"></div>
-                  </div>
-                  {/* Repeat for continuous scroll effect */}
-                  <div className="device-element smartphone">
-                    <div className="screen">
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                    </div>
-                  </div>
-                  <div className="device-element laptop">
-                    <div className="screen">
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                    </div>
-                    <div className="keyboard"></div>
-                  </div>
-                  <div className="device-element tablet">
-                    <div className="screen">
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                      <div className="code-line"></div>
-                    </div>
-                  </div>
-                  <div className="device-element desktop">
-                    <div className="monitor">
-                      <div className="screen">
-                        <div className="code-line"></div>
-                        <div className="code-line"></div>
-                        <div className="code-line"></div>
-                      </div>
-                    </div>
-                    <div className="stand"></div>
-                  </div>
-                </div>
-              </div>
-
+              {/*contact section*/}
               <section
                 className={`contact-section ${
                   contactInView ? "fade-in-up" : ""
@@ -776,13 +705,6 @@ function App() {
                         <div>
                           <h4>Business Inquiries</h4>
                           <p>business@codeskill.dev</p>
-                        </div>
-                      </div>
-                      <div className="contact-item">
-                        <DocumentCheckIcon className="contact-icon" />
-                        <div>
-                          <h4>Office Location</h4>
-                          <p>123 Tech Street, Silicon Valley, CA</p>
                         </div>
                       </div>
                     </div>
