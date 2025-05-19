@@ -2,16 +2,25 @@
 .admin-dashboard {
   display: grid;
   grid-template-columns: 250px 1fr;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   background: var(--background-dark);
   color: var(--text-primary);
+  overflow: hidden;
 }
 
 /* Sidebar Styles */
 .dashboard-sidebar {
   background: #1e293b;
   color: #f8fafc;
-  padding: 2rem;
+  padding: 1.5rem;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .sidebar-header h2 {
@@ -62,20 +71,22 @@
 
 /* Main Content Styles */
 .dashboard-main {
-  padding: 1.5rem;
+  height: 100vh;
+  overflow-y: auto;
   background: #f8fafc;
 }
 
 /* Header Styles */
 .dashboard-header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
 .header-search input {
@@ -91,40 +102,24 @@
   gap: 1.5rem;
 }
 
-.notification-btn {
-  position: relative;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.notification-btn .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #64748b;
-}
-
-.notification-badge {
-  position: absolute;
-  top: -5px;
-  right: -5px;
+.logout-btn {
+  padding: 0.5rem 1rem;
   background: #ef4444;
   color: white;
-  font-size: 0.75rem;
-  padding: 0.125rem 0.375rem;
-  border-radius: 9999px;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.admin-profile {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.logout-btn:hover {
+  background: #dc2626;
 }
 
-.avatar {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
+/* Header Actions */
+.header-actions {
+  margin-left: auto;
 }
 
 /* Stats Grid Styles */
@@ -223,7 +218,16 @@
   background: white;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
   overflow: hidden;
+}
+
+.users-table {
+  overflow-x: auto;
+}
+
+.users-table table {
+  min-width: 1000px;
 }
 
 table {
@@ -236,6 +240,11 @@ td {
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
+}
+
+td {
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
 th {
@@ -388,6 +397,41 @@ select {
   color: #ca8a04;
 }
 
+/* User Avatar Styles */
+.user-avatar {
+  border: 2px solid #e2e8f0;
+  transition: transform 0.2s;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}
+
+/* Content Sections */
+.dashboard-content {
+  padding: 1.5rem 2rem;
+}
+
+.overview-section,
+.users-section,
+.results-section,
+.pending-section,
+.settings-section {
+  background: transparent;
+}
+
+/* Improved Scrolling */
+.dashboard-main::-webkit-scrollbar,
+.dashboard-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard-main,
+.dashboard-sidebar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .admin-dashboard {
@@ -410,5 +454,16 @@ select {
 
   .header-search input {
     width: 200px;
+  }
+
+  .dashboard-sidebar {
+    position: fixed;
+    left: -250px;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+
+  .dashboard-sidebar.open {
+    left: 0;
   }
 }

@@ -16,6 +16,9 @@ const placeholderUsers = [
     id: 1,
     name: "John Doe",
     email: "john@example.com",
+    gender: "Male",
+    picture: "https://api.dicebear.com/7.x/avatars/svg?seed=john",
+    qualifications: "B.Tech in Computer Science",
     joinDate: "2025-05-01",
     testsCompleted: 15,
   },
@@ -23,6 +26,9 @@ const placeholderUsers = [
     id: 2,
     name: "Jane Smith",
     email: "jane@example.com",
+    gender: "Female",
+    picture: "https://api.dicebear.com/7.x/avatars/svg?seed=jane",
+    qualifications: "M.Sc in Software Engineering",
     joinDate: "2025-05-05",
     testsCompleted: 12,
   },
@@ -30,6 +36,9 @@ const placeholderUsers = [
     id: 3,
     name: "Mike Johnson",
     email: "mike@example.com",
+    gender: "Male",
+    picture: "https://api.dicebear.com/7.x/avatars/svg?seed=mike",
+    qualifications: "BSc in Information Technology",
     joinDate: "2025-05-10",
     testsCompleted: 8,
   },
@@ -167,20 +176,16 @@ export default function AdminDashboard() {
         <header className="dashboard-header">
           <div className="header-search">
             <input type="text" placeholder="Search..." />
-          </div>
+          </div>{" "}
           <div className="header-actions">
-            <button className="notification-btn">
-              <BellIcon className="icon" />
-              <span className="notification-badge">3</span>
+            <button
+              className="logout-btn"
+              onClick={() => {
+                window.location.href = "/";
+              }}
+            >
+              Logout
             </button>
-            <div className="admin-profile">
-              <img
-                src="https://api.dicebear.com/7.x/avatars/svg?seed=admin"
-                alt="Admin"
-                className="avatar"
-              />
-              <span>Admin</span>
-            </div>
           </div>
         </header>
 
@@ -234,20 +239,38 @@ export default function AdminDashboard() {
               <h2>Registered Users</h2>
               <div className="users-table">
                 <table>
+                  {" "}
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Join Date</th>
-                      <th>Tests Completed</th>
-                      <th>Actions</th>
+                      <th>Profile</th>
+                      <th>Full Name</th>
+                      <th>Email Address</th>
+                      <th>Gender Identity</th>
+                      <th>Academic Background</th>
+                      <th>Enrollment Date</th>
+                      <th>Assessments Done</th>
+                      <th>Manage</th>
                     </tr>
                   </thead>
                   <tbody>
                     {placeholderUsers.map((user) => (
                       <tr key={user.id}>
+                        <td>
+                          <img
+                            src={user.picture}
+                            alt={user.name}
+                            className="user-avatar"
+                            style={{
+                              width: "40px",
+                              height: "40px",
+                              borderRadius: "50%",
+                            }}
+                          />
+                        </td>
                         <td>{user.name}</td>
                         <td>{user.email}</td>
+                        <td>{user.gender}</td>
+                        <td>{user.qualifications}</td>
                         <td>{user.joinDate}</td>
                         <td>{user.testsCompleted}</td>
                         <td>
