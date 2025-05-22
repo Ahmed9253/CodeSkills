@@ -599,7 +599,6 @@ function App() {
                       <span className="pill-value glow-text">500+</span>
                     </div>
                   </div>
-
                   <div className="about-card dark-card">
                     <div className="icon-container blue">
                       <DocumentCheckIcon className="about-icon" />
@@ -715,6 +714,48 @@ function App() {
 
                 </div>
               </section>
+
+              {/* Supported Languages Section */}
+              <section className="languages-section" id="languages">
+                <div className="section-header">
+                  <h2>All the Modern Languages Supported</h2>
+                  <p className="section-subtitle">
+                    Our platform supports a wide range of programming languages to help you master your coding skills
+                  </p>
+                </div>
+                <div className="languages-content">
+                  <div className="languages-image-container">
+                    <img src="/feature.png" alt="Supported programming languages" className="languages-image" />
+                  </div>
+                  <div className="languages-list">
+                    <div className="language-item">
+                      <span className="language-icon">JS</span>
+                      <span className="language-name">JavaScript</span>
+                    </div>
+                    <div className="language-item">
+                      <span className="language-icon">PY</span>
+                      <span className="language-name">Python</span>
+                    </div>
+                    <div className="language-item">
+                      <span className="language-icon">JV</span>
+                      <span className="language-name">Java</span>
+                    </div>
+                    <div className="language-item">
+                      <span className="language-icon">C#</span>
+                      <span className="language-name">C#</span>
+                    </div>
+                    <div className="language-item">
+                      <span className="language-icon">TS</span>
+                      <span className="language-name">TypeScript</span>
+                    </div>
+                    <div className="language-item">
+                      <span className="language-icon">GO</span>
+                      <span className="language-name">Go</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
               {/*contact section*/}
               <section
                 className={`contact-section ${
@@ -736,14 +777,14 @@ function App() {
                         <CodeBracketIcon className="contact-icon" />
                         <div>
                           <h4>Technical Support</h4>
-                          <p>support@codeskill.dev</p>
+                          <p>support@codecerd.dev</p>
                         </div>
                       </div>
                       <div className="contact-item">
                         <UserGroupIcon className="contact-icon" />
                         <div>
                           <h4>Business Inquiries</h4>
-                          <p>business@codeskill.dev</p>
+                          <p>business@codecerd.dev</p>
                         </div>
                       </div>
                     </div>
@@ -838,7 +879,7 @@ function App() {
                 <div className="footer-bottom">
                   <div className="footer-bottom-content">
                     <p>
-                      &copy; {new Date().getFullYear()} CodeSkill Platform. All
+                      &copy; {new Date().getFullYear()} CodeCerd Platform. All
                       rights reserved.
                     </p>
                     <div className="footer-bottom-links">

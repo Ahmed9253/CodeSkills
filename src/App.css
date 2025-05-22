@@ -204,6 +204,34 @@
   padding-top: 1rem;
 }
 
+/* Essential images styling */
+.essential-images-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3.5rem auto 2rem;
+  flex-wrap: wrap;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
+}
+
+.essential-image-container {
+  width: 100%;
+  max-width: 220px; /* Increased from 180px to 220px */
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.essential-image {
+  width: 100%;
+  height: auto;
+  opacity: 0.95; /* Slightly transparent for subtlety */
+  /* Removed border, border-radius, and box-shadow */
+
+}
+
 /* Modal and Auth Form Styles */
 .modal-overlay {
   position: fixed;
@@ -902,7 +930,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  animation: floatAnimation 3s ease-in-out infinite;
+  /* Animation removed to make image static */
 }
 
 .hero-image {
@@ -1042,12 +1070,13 @@ body {
   margin-bottom: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #3b82f6 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #0f172a 70%, #6366f1 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   position: relative;
   display: inline-block;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .about-description {
@@ -1643,6 +1672,14 @@ body {
   color: var(--text-primary);
   font-size: 1rem;
   transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(139, 92, 246, 0.2);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .modal-header {
@@ -1955,8 +1992,79 @@ body {
   font-size: 1.2rem;
   margin-top: 1rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+/* Languages Section Styling */
+.languages-section {
+  padding: 5rem 5%;
+  background: linear-gradient(to bottom, rgba(99, 102, 241, 0.05), rgba(255, 255, 255, 0));
+}
+
+.languages-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  gap: 2rem;
+}
+
+.languages-image-container {
+  flex: 0 0 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.languages-image {
+  width: 100%;
+  max-width: 400px; /* Smaller size as requested */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+}
+
+.languages-list {
+  flex: 0 0 50%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.language-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.language-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.language-name {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .features-grid {
@@ -2410,6 +2518,43 @@ body {
     opacity: 0.3;
     transform: translate(0, 0) scale(0.8);
   }
+}
+
+/* Hero Section Styling with Subtle Gradient */
+.hero {
+  position: relative;
+  padding: 6rem 5% 4rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(59, 130, 246, 0.05) 100%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.1) 0%, transparent 60%), 
+              radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-content {
+  flex-basis: 55%;
+  position: relative;
 }
 
 /* Removed marqueeScroll animation */
