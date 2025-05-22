@@ -26,8 +26,19 @@
 
 /* Section header styling */
 .section-header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* To keep content centered like text-align: center */
+  text-align: center; /* Keep for text within items if they wrap */
   margin-bottom: 3rem;
+}
+
+.about-section.dark-theme .section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Keeps content centered */
+  position: relative; /* Retain for z-index if still needed from previous edits */
+  z-index: 1; /* Retain for z-index if still needed */
 }
 
 /* About section and cards styling */
@@ -47,11 +58,11 @@
   flex-direction: column;
 }
 
-.about-card.dark-card {
-  background-color: #1e293b;
-  color: #f8fafc;
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(99, 102, 241, 0.15) inset;
+.about-section.dark-theme .about-card.dark-card {
+  background-color: #1f2937; /* Lighter dark slate gray background */
+  color: #c9d1d9; /* Light gray text for contrast */
+  border: 1px solid #374151; /* Adjusted border for new background */
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.3), 0 0 15px rgba(80, 80, 200, 0.1) inset; /* Adjusted shadow for darker theme */
 }
 
 .about-card:hover {
@@ -66,11 +77,19 @@
   color: #f8fafc;
 }
 
+.about-section.dark-theme .about-card.dark-card h3 {
+  color: #FFFFFF; /* Pure white for h3 in dark cards */
+}
+
 .about-card p {
   margin-bottom: 1.5rem;
   line-height: 1.6;
   color: #cbd5e1;
   flex: 1;
+}
+
+.about-section.dark-theme .about-card.dark-card p {
+  color: #FFFFFF; /* Pure white for paragraph text in dark cards */
 }
 
 .icon-container {
@@ -112,6 +131,12 @@
   border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
+.about-section.dark-theme .about-card.dark-card .stat-pill.dark-pill {
+  color: #FFFFFF; /* Pure white for pill text in dark cards */
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter background for contrast */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .pill-value {
   font-weight: 700;
 }
@@ -121,28 +146,48 @@
   text-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
 }
 
+.about-section.dark-theme .about-card.dark-card .glow-text {
+  color: #FFFFFF; /* Pure white for pill value text in dark cards */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* White glow */
+}
+
 .dark-heading {
   font-size: 2.5rem;
   font-weight: 700;
   color: #f8fafc;
   margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
-  position: relative;
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-.dark-heading::after {
-  content: '';
-  position: absolute;
-  bottom: -0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: #6366f1;
-  border-radius: 2px;
+.about-section.dark-theme .dark-heading {
+  border-bottom: none !important;
+  text-decoration: none !important;
+  padding-bottom: 0; /* Reset padding, was 1rem, could be an artifact or for spacing */
+  position: relative; /* Keep if it was intended for other layout reasons */
+  display: block; /* Keep if it was intended */
+}
+
+.about-section.dark-theme .dark-heading::before,
+.about-section.dark-theme .dark-heading::after {
+  content: none !important;
+  display: none !important;
+  border: none !important;
+  background: none !important;
+}
+
+/* Ensure no ::after pseudo-element is displayed for .dark-heading generally or specifically in the dark theme */
+.dark-heading::after,
+.about-section.dark-theme .dark-heading::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  bottom: auto !important; /* Override specific positioning */
+  left: auto !important; /* Override specific positioning */
+  transform: none !important; /* Override specific positioning */
 }
 
 .about-description {
@@ -508,6 +553,13 @@ body {
 
 .landing-container {
   min-height: 100vh;
+
+/* Hero Section Styling */
+.hero {
+  padding-top: 7rem; /* Adjust to clear fixed navbar (approx 1.5rem top + 4.5rem height + 1rem buffer) */
+  /* Add other hero-specific styles if needed */
+}
+
   width: 100%;
   background: var(--background-dark);
   color: var(--text-primary);

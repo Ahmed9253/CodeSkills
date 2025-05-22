@@ -570,11 +570,7 @@ function App() {
                 <div className="section-header">
                   <h2 className="dark-heading">Essential CodeCerd Skills</h2>
                   <p className="about-description">
-                    Master the fundamental skills that every modern developer
-                    needs. From algorithmic thinking to clean code practices, we
-                    help you build a strong foundation in programming. Our
-                    comprehensive skill development system ensures you're
-                    prepared for real-world challenges in software development.
+                    Develop crucial modern developer skills, from algorithmic thinking to clean code. Build a strong programming foundation for real-world software challenges.
                   </p>
                 </div>
                 <div className="about-grid">
