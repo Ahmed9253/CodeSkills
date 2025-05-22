@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AdminDashboard from "./pages/AdminDashboard";
+import UserDashboard from "./pages/UserDashboard";
 import "./App.css";
-import "./pages/DarkThemeSkills.css";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
 import {
@@ -186,6 +186,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/dashboard" element={<UserDashboard />} />
         <Route
           path="/"
           element={
@@ -322,7 +323,14 @@ function App() {
                         <XMarkIcon className="close-icon" />
                       </button>
                     </div>
-                    <form className="auth-form">
+                    <form
+                      className="auth-form"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        // For demo purposes, redirect to dashboard
+                        window.location.href = "/dashboard";
+                      }}
+                    >
                       <div className="input-group">
                         <label htmlFor="login-email">Email</label>
                         <input type="email" id="login-email" required />

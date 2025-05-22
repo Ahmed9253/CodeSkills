@@ -52,8 +52,8 @@
 
 /* Sidebar Styles */
 .dashboard-sidebar {
-  background: var(--dark-blue);
-  color: var(--light);
+  background: white;
+  color: var(--gray-700);
   padding: 2rem 1.5rem;
   height: 100vh;
   overflow-y: auto;
@@ -61,6 +61,7 @@
   z-index: 20;
   transition: all 0.3s ease;
   width: 280px;
+  border-right: 1px solid var(--gray-200);
 }
 
 .dashboard-sidebar.collapsed {
@@ -97,8 +98,8 @@
 }
 
 .sidebar-toggle {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -106,7 +107,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--light);
+  color: var(--gray-600);
   transition: all 0.3s ease;
   position: absolute;
   right: 0;
@@ -117,19 +118,19 @@
   right: 50%;
   transform: translateX(50%);
   margin-top: 1rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--gray-200);
 }
 
 .sidebar-toggle:hover {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  background: var(--gray-300);
+  box-shadow: var(--shadow-sm);
 }
 
 .toggle-icon {
   width: 20px;
   height: 20px;
   stroke-width: 2.5;
-  color: white;
+  color: var(--gray-600);
 }
 
 .sidebar-nav {
@@ -144,7 +145,7 @@
   gap: 1rem;
   padding: 1rem 1.25rem;
   border-radius: var(--border-radius);
-  color: var(--gray-300);
+  color: var(--gray-600);
   transition: var(--transition);
   border: none;
   background: transparent;
@@ -174,12 +175,12 @@
 
 .nav-item:hover {
   background: rgba(79, 70, 229, 0.1);
-  color: var(--primary-light);
+  color: var(--primary);
   transform: translateX(3px);
 }
 
 .nav-item.active {
-  background: rgba(79, 70, 229, 0.2) !important;
+  background: var(--primary) !important;
   color: white !important;
   font-weight: 600;
   box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);

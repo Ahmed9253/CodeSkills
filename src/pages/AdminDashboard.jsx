@@ -98,7 +98,7 @@ export default function AdminDashboard() {
       {/* Sidebar */}
       <aside className={`dashboard-sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
-          <h2>Admin Panel</h2>
+          {!sidebarCollapsed && <h2>Admin Panel</h2>}
           <button 
             className="sidebar-toggle" 
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
