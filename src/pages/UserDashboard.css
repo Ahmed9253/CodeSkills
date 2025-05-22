@@ -316,6 +316,166 @@
   flex: 1;
 }
 
+/* Enrolled Courses Grid */
+.enrolled-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Take a Test Section Styles */
+.take-test-section {
+  padding: 1rem;
+}
+
+.take-test-section .section-header {
+  margin-bottom: 2rem;
+}
+
+.take-test-section .section-header h2 {
+  font-size: 1.75rem;
+  color: var(--gray-800);
+  margin-bottom: 0.5rem;
+}
+
+.take-test-section .section-header p {
+  color: var(--gray-600);
+  font-size: 1rem;
+  max-width: 800px;
+}
+
+.tests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 1.5rem;
+}
+
+.test-card {
+  display: flex;
+  background-color: var(--light);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.test-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.test-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  background-color: var(--gray-100);
+  padding: 1.5rem;
+}
+
+.test-icon img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.test-details {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.test-details h3 {
+  font-size: 1.25rem;
+  color: var(--gray-800);
+  margin-bottom: 0.75rem;
+}
+
+.test-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.test-difficulty {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.test-time, .test-questions {
+  color: var(--gray-600);
+}
+
+.test-details p {
+  color: var(--gray-700);
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.start-test-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.start-test-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Style for the Take a Test button in the sidebar */
+.nav-item.take-test {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--border-radius);
+  color: var(--gray-600);
+  transition: var(--transition);
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  justify-content: flex-start;
+}
+
+.nav-item.take-test:hover {
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--primary);
+  transform: translateX(3px);
+}
+
+.nav-item.take-test .nav-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.nav-item.take-test .next-icon {
+  transition: transform 0.2s ease;
+}
+
+.nav-item.take-test:hover .next-icon {
+  transform: translateX(2px);
+}
+
 /* Overview Section */
 .stats-grid {
   display: grid;

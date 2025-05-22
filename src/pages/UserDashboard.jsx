@@ -128,7 +128,7 @@ const UserDashboard = () => {
       {/* Sidebar */}
       <div className={`dashboard-sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
-          {!sidebarCollapsed && <h2>CodeSkills</h2>}
+          {!sidebarCollapsed && <h2>CodeCerd</h2>}
           <button className="sidebar-toggle" onClick={toggleSidebar}>
             {sidebarCollapsed ? <ArrowRightIcon className="toggle-icon" /> : <Bars3Icon className="toggle-icon" />}
           </button>
@@ -162,6 +162,13 @@ const UserDashboard = () => {
             >
               <AcademicCapIcon className="nav-icon" />
               <span>Courses</span>
+            </button>
+            <button
+              className="nav-item take-test"
+              onClick={() => window.alert('Starting test session...')}
+            >
+              <span>Take a Test</span>
+              <ArrowRightIcon className="nav-icon next-icon" />
             </button>
           </div>
           
@@ -589,6 +596,7 @@ const UserDashboard = () => {
               </div>
             </div>
           )}
+
         </div>
       </div>
     </div>

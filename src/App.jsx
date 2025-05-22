@@ -12,7 +12,8 @@ import {
   UserGroupIcon,
   DocumentCheckIcon,
   XMarkIcon,
-  ArrowRightIcon, // Added ArrowRightIcon
+  ArrowRightIcon,
+  KeyIcon, // Added KeyIcon for admin button
 } from "@heroicons/react/24/outline";
 import {
   Chart as ChartJS,
@@ -200,7 +201,7 @@ function App() {
                 )}
                 <div className="nav-logo">
                   <CodeBracketIcon className="nav-logo-icon" />
-                  CodeSkill
+                  CodeCerd
                 </div>
                 <button
                   className="mobile-menu-toggle"
@@ -245,11 +246,14 @@ function App() {
                 </ul>
                 <div className="nav-actions">
                   <button
-                    className="nav-btn admin"
+                    className="admin-access-btn"
                     onClick={() => setShowAdminLoginModal(true)}
                     title="Admin Login"
                   >
-                    <ArrowRightIcon className="nav-icon" />
+                    <div className="admin-btn-content">
+                      <KeyIcon className="admin-icon" />
+                      <span>Admin</span>
+                    </div>
                   </button>
                   <button
                     className="nav-btn login"
@@ -315,7 +319,7 @@ function App() {
                 <div className="modal-overlay">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h3>Welcome Back</h3>
+                      <h3>Login</h3>
                       <button
                         className="modal-close"
                         onClick={() => setShowLoginModal(false)}
@@ -339,6 +343,10 @@ function App() {
                         <label htmlFor="login-password">Password</label>
                         <input type="password" id="login-password" required />
                       </div>
+                      <div className="input-group">
+                        <label htmlFor="login-picture">Profile Picture (for verification)</label>
+                        <input type="file" id="login-picture" accept="image/*" required />
+                      </div>
                       <div className="form-actions">
                         <label className="remember-me">
                           <input type="checkbox" />
@@ -349,7 +357,7 @@ function App() {
                         </a>
                       </div>
                       <button type="submit" className="cta-btn primary">
-                        Log in
+                        Submit
                       </button>
                     </form>
                     <div className="auth-footer">
@@ -535,7 +543,7 @@ function App() {
               >
                 <div className="dark-bg-pattern"></div>
                 <div className="section-header">
-                  <h2 className="dark-heading">Essential Code Skills</h2>
+                  <h2 className="dark-heading">Essential CodeCerd Skills</h2>
                   <p className="about-description">
                     Master the fundamental skills that every modern developer
                     needs. From algorithmic thinking to clean code practices, we
