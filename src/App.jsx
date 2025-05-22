@@ -530,34 +530,45 @@ function App() {
               {/* Marquee Divider */}
               <div className="marquee-divider">
                 <div className="marquee-content">
-                  {[...Array(2)].map((_, i) => (
-                    <div key={i} style={{ display: "flex", gap: "2rem" }}>
+                  <div style={{ display: "flex", gap: "2rem", justifyContent: "center" }}>
                       <div className="marquee-item">
-                        <span>{"<"}</span>HTML<span>{"/>"}</span>
+                        <span className="token-punctuation">{"<"}</span>
+                        <span className="token-tag">HTML</span>
+                        <span className="token-punctuation">{"/>"}</span>
                       </div>
                       <div className="marquee-item">
-                        <span>{"{"}</span>CSS<span>{"}"}</span>
+                        <span className="token-punctuation">{"{"}</span>
+                        <span className="token-property">CSS</span>
+                        <span className="token-punctuation">{"}"}</span>
                       </div>
                       <div className="marquee-item">
-                        <span>()</span>JavaScript<span>{"=>"}</span>
+                        <span className="token-punctuation">()</span>
+                        <span className="token-function">JavaScript</span>
+                        <span className="token-operator">{"=>"}</span>
+                      </div>
+
+                      <div className="marquee-item">
+                        <span className="token-keyword">const</span>
+                        <span className="token-function">Python</span>
+                        <span className="token-operator">=</span>
+                        <span className="token-keyword">True</span>
                       </div>
                       <div className="marquee-item">
-                        <span>import</span>React<span>from 'react'</span>
+                        <span className="token-punctuation">{"{"}</span>
+                        <span className="token-string">"JSON"</span>
+                        <span className="token-punctuation">{"}"}</span>
                       </div>
                       <div className="marquee-item">
-                        <span>const</span>Python<span>=</span>True
+                        <span className="token-keyword">git</span>
+                        <span className="token-function">commit</span>
+                        <span className="token-operator">-m</span>
                       </div>
                       <div className="marquee-item">
-                        <span>{"{"}</span>JSON<span>{"}"}</span>
-                      </div>
-                      <div className="marquee-item">
-                        <span>git</span>commit<span>-m</span>
-                      </div>
-                      <div className="marquee-item">
-                        <span>npm</span>install<span>--save</span>
+                        <span className="token-keyword">npm</span>
+                        <span className="token-function">install</span>
+                        <span className="token-operator">--save</span>
                       </div>
                     </div>
-                  ))}
                 </div>
               </div>
 
@@ -775,7 +786,7 @@ function App() {
                     <div className="footer-brand">
                       <div className="footer-logo">
                         <CodeBracketIcon className="footer-logo-icon" />
-                        <h3>CodeSkill</h3>
+                        <h3>CodeCerd</h3>
                       </div>
                       <p>
                         Empowering developers through AI-powered assessments.

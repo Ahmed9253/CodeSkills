@@ -1,3 +1,6 @@
+/* Import Pacifico font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 :root {
   --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%);
@@ -38,7 +41,7 @@
   flex-direction: column;
   align-items: center; /* Keeps content centered */
   position: relative; /* Retain for z-index if still needed from previous edits */
-  z-index: 1; /* Retain for z-index if still needed */
+  z-index: 1; /* Above hero::before */
 }
 
 /* About section and cards styling */
@@ -2409,91 +2412,164 @@ body {
   }
 }
 
-@keyframes marqueeScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-50% - 1.5rem));
-  }
+/* Removed marqueeScroll animation */
+
+/* Redesigned Marquee Divider */
+.marquee-divider {
+  position: relative;
+  width: 100%;
+  padding: 3rem 0;
+  background: transparent; /* Transparent background */
+  overflow: visible;
 }
 
-/* Floating Orbs Animation */
+/* Add a decorative pattern to the divider */
+.marquee-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+}
+
+/* Add decorative rope at the bottom */
 .marquee-divider::after {
-  animation: floatingOrb 8s ease-in-out infinite;
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #8b5cf6; /* Purple rope color */
+  box-shadow: 
+    0 -2px 0 #6d28d9, /* Darker purple for depth */
+    0 2px 0 #a78bfa, /* Lighter purple for highlight */
+    0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow */
+  border-radius: 3px;
+  z-index: 1;
 }
 
-@keyframes floatingOrb {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(-30px, -20px) scale(1.2);
-    opacity: 0.7;
-  }
+.marquee-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
+/* New code snippet design */
 .marquee-item {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 3rem;
+  margin: 0 1rem;
+  padding: 1.5rem 2rem;
+  background: #1e293b;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  transition: transform 0.3s ease, background 0.3s ease;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05),
-    0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: rotate(-2deg);
+  border-top: 4px solid #8b5cf6; /* Purple accent */
+  border-bottom: 4px solid #3b82f6; /* Blue accent */
+  
+  /* String is added via separate selector */
 }
 
-.marquee-item::after {
-  content: "";
+/* Add string connecting to the rope */
+.marquee-item::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(99, 102, 241, 0.5),
-    rgba(139, 92, 246, 0.5)
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  top: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #a78bfa; /* String color */
+  transform: translateX(-50%);
 }
 
-.marquee-item:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.2),
-    0 8px 20px rgba(0, 0, 0, 0.08), 0 0 15px rgba(99, 102, 241, 0.1);
+/* Alternate rotation for visual interest */
+.marquee-item:nth-child(even) {
+  transform: rotate(2deg);
+  border-top: 4px solid #3b82f6; /* Blue accent */
+  border-bottom: 4px solid #8b5cf6; /* Purple accent */
 }
 
-.marquee-item:hover::after {
-  opacity: 1;
+/* Special highlight for the third item */
+.marquee-item:nth-child(3) {
+  transform: rotate(-1deg) translateY(-10px);
+  border-top: 4px solid #f59e0b; /* Amber accent */
+  border-bottom: 4px solid #10b981; /* Emerald accent */
 }
 
 .marquee-item span {
-  position: relative;
-  z-index: 1;
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  transition: color 0.3s ease;
-  text-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
-  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.2));
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: #f8fafc;
+  margin: 0 0.2rem;
+}
+
+/* Token colors with enhanced brightness for better visibility */
+.marquee-item .token-punctuation {
+  color: #f9a8d4; /* Pink */
+}
+
+.marquee-item .token-keyword {
+  color: #93c5fd; /* Light blue */
+}
+
+.marquee-item .token-tag {
+  color: #fca5a5; /* Light red */
+}
+
+.marquee-item .token-property {
+  color: #6ee7b7; /* Light green */
+}
+
+.marquee-item .token-string {
+  color: #fde047; /* Yellow */
+}
+
+.marquee-item .token-function {
+  color: #c4b5fd; /* Lavender */
+}
+
+.marquee-item .token-operator {
+  color: #f0abfc; /* Pink */
+}
+
+.marquee-item .token-punctuation {
+  color: #cbd5e1;
+}
+
+.marquee-item .token-keyword {
+  color: #93c5fd;
+}
+
+.marquee-item .token-tag {
+  color: #fca5a5;
+}
+
+.marquee-item .token-property {
+  color: #6ee7b7;
+}
+
+.marquee-item .token-string {
+  color: #fde047;
+}
+
+.marquee-item .token-function {
+  color: #c4b5fd;
+}
+
+.marquee-item .token-operator {
+  color: #f0abfc;
+}
+
+.marquee-item .token-comment {
+  color: #6b7280;
+  font-style: italic;
 }
 
 /* Devices Reel Styles */
