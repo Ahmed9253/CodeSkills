@@ -405,8 +405,12 @@ function App() {
                         <input type="password" id="signup-password" required />
                       </div>
                       <div className="input-group">
-                        <label htmlFor="signup-age">Age</label>
-                        <input type="number" id="signup-age" min="16" max="100" required />
+                        <label htmlFor="signup-dob">Date of Birth</label>
+                        <input type="date" id="signup-dob" required />
+                      </div>
+                      <div className="input-group">
+                        <label htmlFor="signup-phone">Phone Number</label>
+                        <input type="tel" id="signup-phone" placeholder="e.g., +1 (555) 123-4567" required />
                       </div>
                       <div className="input-group">
                         <label htmlFor="signup-gender">Gender</label>
@@ -435,6 +439,27 @@ function App() {
                       <div className="input-group">
                         <label htmlFor="signup-picture">Profile Picture</label>
                         <input type="file" id="signup-picture" accept="image/*" required />
+                      </div>
+                      <div className="input-group">
+                        <label htmlFor="signup-livescan">Live Scan Photo</label>
+                        <div className="live-scan-container">
+                          <input 
+                            type="file" 
+                            id="signup-livescan" 
+                            accept="image/*" 
+                            capture="user" 
+                            required 
+                            className="hidden-file-input"
+                          />
+                          <button 
+                            type="button" 
+                            className="scan-btn-full" 
+                            onClick={() => document.getElementById('signup-livescan').click()}
+                          >
+                            Take Photo
+                          </button>
+                        </div>
+                        <small className="field-hint">Please take a clear photo of your face for verification purposes.</small>
                       </div>
                       <div className="terms-checkbox">
                         <input type="checkbox" id="signup-terms" required />
