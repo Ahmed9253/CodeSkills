@@ -24,6 +24,138 @@
   box-sizing: border-box;
 }
 
+/* Section header styling */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* About section and cards styling */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.about-card {
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-card.dark-card {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(99, 102, 241, 0.15) inset;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 30px rgba(99, 102, 241, 0.2) inset;
+}
+
+.about-card h3 {
+  margin: 1.5rem 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.about-card p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  flex: 1;
+}
+
+.icon-container {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-container.purple {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.icon-container.blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+}
+
+.about-icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.stat-pill.dark-pill {
+  background-color: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.pill-value {
+  font-weight: 700;
+}
+
+.glow-text {
+  color: #8b5cf6;
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+.dark-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dark-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #6366f1;
+  border-radius: 2px;
+}
+
+.about-description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+  position: relative;
+  top: 1rem;
+  padding-top: 1rem;
+}
+
 /* Modal and Auth Form Styles */
 .modal-overlay {
   position: fixed;
