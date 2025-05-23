@@ -294,7 +294,7 @@ function App() {
                         const password = e.target.adminPassword.value;
 
                         // Check for the specified credentials
-                        if (username === "codeskill" && password === "Admin") {
+                        if (username === "codecerd" && password === "admin") {
                           window.location.href = "/admin";
                         } else {
                           alert("Invalid admin credentials. Please try again.");

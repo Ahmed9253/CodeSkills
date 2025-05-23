@@ -1279,3 +1279,50 @@ select:focus {
     padding: 1.5rem;
   }
 }
+
+/* Dashboard and Logout Button Styles */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dashboard-button,
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 14px;
+}
+
+.dashboard-button {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+}
+
+.dashboard-button:hover {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.logout-button {
+  background-color: #ef4444;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #dc2626;
+}
+
+.dashboard-icon,
+.logout-icon {
+  width: 16px;
+  height: 16px;
+}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   UserGroupIcon,
   ClipboardDocumentCheckIcon,
@@ -9,6 +9,7 @@ import {
   BellIcon,
   ArrowTrendingUpIcon,
 } from "@heroicons/react/24/outline";
+import { LogOut, ArrowLeft } from "lucide-react";
 import "./AdminDashboard.css";
 
 const placeholderUsers = [
@@ -301,6 +302,7 @@ const placeholderPendingTests = [
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="admin-dashboard">
@@ -366,12 +368,11 @@ export default function AdminDashboard() {
           </div>{" "}
           <div className="header-actions">
             <button
-              className="logout-btn"
-              onClick={() => {
-                window.location.href = "/";
-              }}
+              className="logout-button"
+              onClick={() => navigate('/')}
             >
-              Logout
+              <LogOut className="logout-icon" />
+              <span className="logout-text">Logout</span>
             </button>
           </div>
         </header>
