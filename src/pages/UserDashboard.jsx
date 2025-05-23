@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   UserIcon, 
   ChartBarIcon, 
@@ -15,6 +16,7 @@ import './UserDashboard.css';
 const UserDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const navigate = useNavigate();
   
   const handleLogout = () => {
     // In a real application, you would clear authentication tokens/cookies here
@@ -165,7 +167,7 @@ const UserDashboard = () => {
             </button>
             <button
               className="nav-item take-test"
-              onClick={() => window.alert('Starting test session...')}
+              onClick={() => navigate('/quiz')}
             >
               <span>Take a Test</span>
               <ArrowRightIcon className="nav-icon next-icon" />

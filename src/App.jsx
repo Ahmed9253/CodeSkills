@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserDashboard from "./pages/UserDashboard";
+import Quizz from "./pages/Quizz";
 import "./App.css";
 import { useInView } from "react-intersection-observer";
 import { useState, useEffect } from "react";
@@ -188,6 +189,8 @@ function App() {
       <Routes>
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/dashboard" element={<UserDashboard />} />
+        <Route path="/quiz" element={<Quizz />} />
+        <Route path="/quiz/:languageUrlParam" element={<Quizz />} />
         <Route
           path="/"
           element={
